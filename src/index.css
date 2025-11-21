@@ -1,68 +1,220 @@
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('CinzelDecorative-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('Roboto.ttf') format('truetype');
+  font-weight: 400 700;
+}
+
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  --color-bg: #6B1E3E;
+  --color-text:s #E8E8E8;
+  --color-button-text: #0F0F0F;
+  --color-button-reward: #C2A662;
+  --color-card: #D9D9D9;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* GLOBAL */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  background-color: var(--color-bg);
+  font-family: 'Roboto', sans-serif;
+  color: var(--color-text);
 }
 
+.container {
+  margin: 0 16px;
+}
+
+section {
+  padding-bottom: 40px;
+}
+
+img {
+  width: 100%;
+  display: block;
+}
+
+/* HEADINGS */
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
 }
 
+h2,
+h3 {
+  font-family: 'Roboto';
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+h2 { font-size: 24px; }
+h3 { font-size: 14px; }
+
+h4 {
+  font-family: 'Cinzel', serif;
+  font-size: 16px;
+}
+
+/* BUTTONS */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  flex: 1;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  background-color: var(--color-button-reward);
+  color: var(--color-button-text);
+  transition: background-color 0.3s;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+button:hover,
+button:active {
+  background-color: var(--color-text);
+}
+
+/* MENU */
+.logo,
+.radar-info {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.logo {
+  flex-direction: row;
+  height: 40px;
+}
+
+.logo-image img {
+  height: 40px;
+}
+
+/* HERO */
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* MAP */
+.map img {
+  padding-top: 24px;
+}
+
+/* FOOTER */
+footer {
+  height: 40px;
+  text-align: center;
+}
+
+/* PLACE */
+.radar-card {
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+}
+
+.radar-infomation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.radar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* ARROW */
+#arrow-line {
+  position: relative;
+  width: 24px;
+  height: 4px;
+  background: var(--color-text);
+  margin: 50px auto;
+  transition: transform 0.3s ease;
+}
+
+#arrow-line::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(45deg);
+  width: 10px;
+  height: 10px;
+  border-top: 4px solid var(--color-text);
+  border-right: 4px solid var(--color-text);
+}
+
+/* RADAR */
+.radar {
+  width: 160px;
+  height: 160px;
+  position: relative;
+}
+
+#radar-outer {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--color-text);
+  position: relative;
+}
+
+#radar-inner {
+  width: 50%;
+  height: 50%;
+  border: 1px dashed var(--color-button-reward);
+  border-radius: 50%;
+  position: absolute;
+  inset: 50% 0 0 50%;
+  transform: translate(-50%, -50%);
+}
+
+#radar-center,
+#radar-goal {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#radar-center {
+  background-color: var(--color-button-reward);
+}
+
+#radar-goal {
+  background-color: var(--color-button-text);
+}
+
+.reward-card {
+  background-color: var(--color-card);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 16px;
+  padding: 14px;
 }
