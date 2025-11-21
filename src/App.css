@@ -13,7 +13,7 @@
 
 :root {
   --color-bg: #6B1E3E;
-  --color-text:s #E8E8E8;
+  --color-text: #E8E8E8;
   --color-button-text: #0F0F0F;
   --color-button-reward: #C2A662;
   --color-card: #D9D9D9;
@@ -63,6 +63,7 @@ h3 { font-size: 14px; }
 h4 {
   font-family: 'Cinzel', serif;
   font-size: 16px;
+  color: var(--color-text);
 }
 
 /* BUTTONS */
