@@ -1,4 +1,5 @@
 import React from "react";
+import { getGPSDistance, getGPSBearing } from "../radar/geo-helpers";
 
 export default function Radar({
   distanceText = "100 m",
@@ -20,7 +21,7 @@ export default function Radar({
 
       <div id="goal">
         <div className="goal-inner">
-          <img id="goal-arrow" src="/images/arrow.svg" alt="arrow" />
+          <img id="goal-arrow" src="/icons/arrow.svg" alt="arrow" />
           <div id="goal-distance">{distanceText}</div>
         </div>
 
