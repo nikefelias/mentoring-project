@@ -8,11 +8,10 @@ import arrowIcon from "../icons/arrow.svg";
 
 
 const goalPos = { lat: 
-  50.08765260459181, lon: 14.445038603217627 };
+  50.08942697007168, lon: 14.44113002465081 };
 export default function Radar({
   onEnableCompass,
 }) {
-
 
 const radarGoalRef = useRef(null);
 const goalArrowRef = useRef(null);
