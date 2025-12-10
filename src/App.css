@@ -102,3 +102,136 @@ button:active {
 .logo-image img {
   height: 40px;
 }
+
+
+/* От Людка */
+#radar {
+  width: 100%;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+}
+
+#radar-outer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid black;
+  border-radius: 50%;
+  background: #fff;
+}
+
+#radar-inner {
+  width: 50%;
+  height: 50%;
+  border: 1px dashed red;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#radar-center {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: dodgerblue;
+}
+
+#radar-goal {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: red;
+}
+
+
+/* От Людка */
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.container {
+  max-width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 30px;
+  margin: 50px auto;
+}
+
+.btn {
+  padding: 0.5em 1em;
+  font-size: 18px;
+}
+#goal {
+  width: 100%;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.goal-inner {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+#goal-arrow {
+  width: 80px;
+  height: 80px;
+}
+
+#goal-distance {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+#log {
+  width: 100%;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  border: 1px solid red;
+  overflow-x: scroll;
+}
+
+#info {
+  width: 100%;
+  padding: 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  display: flex;
+  gap: 20px;
+  border: 1px solid dodgerblue;
+}
+
+#info div {
+  width: 33.333%;
+}
+
+#info div span {
+  display: block;
+  font-weight: bold;
+}
