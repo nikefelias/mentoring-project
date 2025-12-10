@@ -5,6 +5,9 @@ class Log {
   }
 
   message(msg) {
+    if (!this.element) {
+      return
+    }
     this.element.textContent += msg + '\n'
   }
 

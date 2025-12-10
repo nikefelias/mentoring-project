@@ -4,7 +4,8 @@ import './goal.css'
 import './info.css'
 import './log.css'
 
-import { log } from './log'
+
+
 
 import {
   getGPSBearing,
