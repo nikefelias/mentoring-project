@@ -1,5 +1,4 @@
 import React from "react";
-import { getGPSDistance, getGPSBearing } from "../radar/geo-helpers";
 
 export default function Radar({
   distanceText = "100 m",
