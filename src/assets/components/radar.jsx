@@ -13,11 +13,13 @@ export default function Radar({
   onEnableCompass,
 }) {
 
+// refs to DOM elements
 const radarGoalRef = useRef(null);
 const goalArrowRef = useRef(null);
 const compassBtnRef = useRef(null);
 const logRef = useRef(null);
 
+// current position state
 const [currentPos, setCurrentPos] = useState({
   lon: null,
   lat: null,
@@ -25,6 +27,7 @@ const [currentPos, setCurrentPos] = useState({
   alpha: null,
 });
 
+// derived values
 const { distance, angle, distanceLabel, hasFix } = useMemo(() => {
   const hasCoords = currentPos.lat != null && currentPos.lon != null;
 
@@ -53,6 +56,7 @@ const { distance, angle, distanceLabel, hasFix } = useMemo(() => {
   };
 }, [currentPos]);
 
+// compass and GPS handlers
 const handleOrientation = useCallback((alpha, beta, gamma) => {
   if (alpha === null) {
     log.message("Orientation failed, alpha = null");
@@ -64,6 +68,7 @@ const handleOrientation = useCallback((alpha, beta, gamma) => {
     alpha,
   }));
 }, []);
+
 const handlePosition = useCallback((coords) => {
   setCurrentPos((prev) => ({
     ...prev,
@@ -71,7 +76,7 @@ const handlePosition = useCallback((coords) => {
   }));
 }, []);
 
-
+// initialize GPS and orientation on mount
  useEffect(() => {
     if (!compassBtnRef.current) return;
 
@@ -88,7 +93,7 @@ const handlePosition = useCallback((coords) => {
   };
 }, [handlePosition, handleOrientation]);
 
-
+// update radar goal position on changes
 useEffect(() => {
   if (!radarGoalRef.current || !goalArrowRef.current) return;
 
@@ -108,6 +113,7 @@ useEffect(() => {
   radarGoalRef.current.style.top = `${y}%`;
 }, [distance, angle, currentPos.alpha]);
 
+// render component
   return (
     <div className="radar-card">
       <div id="radar">
