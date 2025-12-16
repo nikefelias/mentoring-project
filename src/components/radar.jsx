@@ -1,10 +1,10 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from "react";
-import "../radar/radar.css";
-import { initOrientation } from "../radar/orientation";
-import { getGPSDistance, getGPSBearing } from "../radar/geo-helpers";
-import { initGPS } from "../radar/gps";
-import { log } from "../radar/log";
-import arrowIcon from "../icons/arrow.svg";
+import "../assets/radar/radar.css";
+import { initOrientation } from "../assets/radar/orientation";
+import { getGPSDistance, getGPSBearing } from "../assets/radar/geo-helpers";
+import { initGPS } from "../assets/radar/gps";
+import { log } from "../assets/radar/log";
+import arrowIcon from "../assets/icons/arrow.svg";
 
 
 const goalPos = { lat: 
@@ -57,7 +57,7 @@ const { distance, angle, distanceLabel, hasFix } = useMemo(() => {
 }, [currentPos]);
 
 // compass and GPS handlers
-const handleOrientation = useCallback((alpha, beta, gamma) => {
+const handleOrientation = useCallback((alpha) => {
   if (alpha === null) {
     log.message("Orientation failed, alpha = null");
     return;

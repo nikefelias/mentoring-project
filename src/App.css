@@ -43,6 +43,14 @@ img {
   display: block;
 }
 
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  position: relative;
+}
+
 /* HEADINGS */
 h1 {
   font-family: 'Cinzel', serif;
@@ -102,5 +110,4 @@ button:active {
 .logo-image img {
   height: 40px;
 }
-
 

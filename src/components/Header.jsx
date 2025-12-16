@@ -1,7 +1,8 @@
 import React from "react";
-import logo from "../icons/logo.svg";
-import '../../App.css'
-import '../../index.css'
+import logo from "../assets/icons/logo.svg";
+import '../App.css'
+import '../index.css'
+import HamburgerNav from "./hamburger.jsx";
 
 function Header() {
   return (
@@ -12,7 +13,7 @@ function Header() {
         </div>
         <h4>Czech Myst</h4>
       </div>
-      <div className="hamburger-menu"></div>
+      <HamburgerNav />
     </header>
   );
 }
