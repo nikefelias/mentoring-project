@@ -43,8 +43,11 @@ export default function HamburgerNav() {
         className={open ? "open" : ""}
       >
         {}
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+        <a href="/">Map</a>
+        <a href="/about">How it works</a>
+        <a href="/rewards">My rewards</a>
+        <a href="/signup">Sign up</a>
+
       </nav>
     </>
   );
