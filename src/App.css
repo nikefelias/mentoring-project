@@ -12,7 +12,12 @@
   font-weight: 400 700;
   font-display: swap;
 }
-
+@font-face {
+  font-family: 'RobotoBold';
+  src: url('./assets/fonts/RobotoBold.ttf') format('truetype');
+  font-weight: 400 700;
+  font-display: swap;
+}
 :root {
   --color-bg: #6B1E3E;
   --color-text: #E8E8E8;
@@ -60,12 +65,12 @@ header {
 h1 {
   font-family: 'Cinzel', serif;
   font-size: 28px;
+  text-align: center;
 }
 
 h2,
 h3 {
-  font-family: 'Roboto';
-  font-weight: 600;
+  font-family: 'RobotoBold', sans-serif;
   text-transform: uppercase;
   color: var(--color-text);
 }
@@ -77,6 +82,15 @@ h4 {
   font-family: 'Cinzel', serif;
   font-size: 16px;
   color: var(--color-text);
+}
+h5 {
+   font-family: 'Roboto';
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-text);
+  font-size: 40px;
+    margin: 12px;
+
 }
 
 /* BUTTONS */
@@ -98,22 +112,5 @@ button {
 button:hover,
 button:active {
   background-color: var(--color-text);
-}
-
-/* MENU */
-.logo,
-.radar-info {
-  display: flex;
-  align-items: center;
-  gap: 22px;
-}
-
-.logo {
-  flex-direction: row;
-  height: 40px;
-}
-
-.logo-image img {
-  height: 40px;
 }
 
