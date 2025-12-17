@@ -6,16 +6,14 @@ import { Outlet } from "react-router";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Header />
-      <div style={{ border: "5px solid dodgerblue", padding: 20 }}>
+      <main>
         <Outlet />
-      </div>
-      <main></main>
-
+      </main>
       <Footer />
-    </div>
-  );
+    </>
+  )
 }
 
 export default App;

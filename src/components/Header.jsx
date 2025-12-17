@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 import logo from "../assets/icons/logo.svg";
 import '../App.css'
 import '../index.css'
@@ -7,12 +8,12 @@ import HamburgerNav from "./hamburger.jsx";
 function Header() {
   return (
     <header>
-      <div className="logo">
+      <Link to="/" className="logo">
         <div className="logo-image">
           <img src={logo} alt="Logo" />
         </div>
         <h4>Czech Myst</h4>
-      </div>
+      </Link>
       <HamburgerNav />
     </header>
   );

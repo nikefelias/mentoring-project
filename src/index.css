@@ -27,10 +27,9 @@ footer {
   left: 0;
   right: 0;
   width: 100vw;
-  margin-left: calc(50% - 50vw); 
-  width: 100vw;
-  height:auto;
-  top: 80px;
+  margin-left: calc(50% - 50vw);
+  height: auto;
+  top: 100px;
   flex-direction: column;
   gap: 12px;
   background: #E8E8E8;
@@ -64,7 +63,6 @@ footer {
 
 @media (max-width: 768px) {
   .hamburger {
-    border:1px solid red;
     display: flex; 
   }
 }
@@ -74,22 +72,36 @@ footer {
   height: 4px;
   width: 40px;
   background: #F5F5F5;
-  margin: 5px 0;
+  margin: 0;
   border-radius: 2px;
   transition: 0.3s;
   transform-origin: center;
 }
 
 #hamburger-menu {
-  padding-right: 80px;
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  z-index: 2001;
+  width: 64px; 
+  height: 64px; 
+}
+
+#hamburger-menu:hover,
+#hamburger-menu:active {
+  background: none;
 }
 
 .hamburger.active span:nth-child(1) {
-  transform: translateY(14px) rotate(45deg);
+  transform: translateY(12px) rotate(45deg);
 }
 .hamburger.active span:nth-child(2) {
   opacity: 0;
 }
 .hamburger.active span:nth-child(3) {
-  transform: translateY(-14px) rotate(-45deg);
+  transform: translateY(-12px) rotate(-45deg);
 }
