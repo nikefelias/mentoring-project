@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import '../index.css'
 
 export default function HamburgerNav() {
@@ -42,12 +43,10 @@ export default function HamburgerNav() {
         ref={navRef}
         className={open ? "open" : ""}
       >
-        {}
-        <a href="/">Map</a>
-        <a href="/about">How it works</a>
-        <a href="/rewards">My rewards</a>
-        <a href="/signup">Sign up</a>
-
+        <Link to="/" onClick={() => setOpen(false)}>Map</Link>
+        <Link to="/about" onClick={() => setOpen(false)}>How it works</Link>
+        <Link to="/rewards" onClick={() => setOpen(false)}>My rewards</Link>
+        <Link to="/signup" onClick={() => setOpen(false)}>Sign up</Link>
       </nav>
     </>
   );

@@ -2,7 +2,7 @@ export default function PlaceDescription({ place }) {
   if (!place) {
     return (
       <div className="place-description">
-        <p>Место не найдено.</p>
+        <p>Place is not found</p>
       </div>
     )
   }

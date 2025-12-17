@@ -11,31 +11,20 @@ export default function Place() {
     () => places.find((place) => place.id === id) ?? null,
     [id],
   )
-  const {
-    lon,
-    lat,
-    alpha,
-    logText,
-    distanceText,
-    enableCompass,
-  } = useRadar()
+  const { enableCompass } = useRadar()
 
   return (
     <section className="content-container">
       {!selectedPlace && (
         <div style={{ marginBottom: 24 }}>
-          <p>Такое место не найдено.</p>
-          <Link to="/">Вернуться к списку</Link>
+          <p>Place is not found</p>
+          <Link to="/">Back to list</Link>
         </div>
       )}
       <main className="place-layout">
         <Radar
-          lon={lon}
-          lat={lat}
-          alpha={alpha}
-          distanceText={distanceText}
+          goalPlace={selectedPlace}
           onEnableCompass={enableCompass}
-          logText={logText}
         />
         <PlaceDescription place={selectedPlace} />
       </main>

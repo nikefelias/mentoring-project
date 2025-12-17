@@ -7,6 +7,8 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Place from './pages/Place.jsx'
 import About from './pages/About.jsx'
+import Signup from './pages/Signup.jsx'
+import Rewards from './pages/Rewards.jsx'
 
 
 import {
@@ -25,6 +27,8 @@ createRoot(document.getElementById('root')).render(
       <Route index element={<Home />} />
       <Route path=":id" element={<Place />} />
       <Route path="about" element={<About />} />
+      <Route path="signup" element={<Signup />} />
+      <Route path="rewards" element={<Rewards />} />
     </Route>
   </Routes>
 </BrowserRouter>
