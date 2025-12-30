@@ -39,6 +39,11 @@
 }
 
 /* CARDS LIST */
+
+.place-description {
+  padding: 0 8px;
+}
+
 .places-list {
   list-style: none;
   padding-left: 0;

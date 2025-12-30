@@ -17,7 +17,6 @@ function App() {
   return (
 
     <>
-     <button onClick={() => { gps.setGpsEnabled(!gps.isGpsEnabled)}}>Change status</button>
       <Header />
       <main>
         <Outlet />

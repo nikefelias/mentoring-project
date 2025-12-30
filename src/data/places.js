@@ -20,35 +20,40 @@ export default [
     "name": "Pernstejn Castle",
     "lat": 49.45122039126791,
     "lon": 16.31857260775001,
-    "description": "The White Lady Bertha. The spirit of a young woman named Bertha appears dressed in white before tragic events. The castle is remarkably well-preserved, but visitors often feel sudden chills and smell jasmine, believed to signal her presence."
+    "description": "The White Lady Bertha. The spirit of a young woman named Bertha appears dressed in white before tragic events. The castle is remarkably well-preserved, but visitors often feel sudden chills and smell jasmine, believed to signal her presence.",
+    "image": ['pernstejn1.jpg', 'pernstejn2.jpg', 'pernstejn3.jpg']
   },
   {
     "id": "blanik-mountain",
     "name": "Blaník Mountain",
     "lat": 49.642665834312005,
     "lon": 14.874537176538146,
-    "description": "The Sleeping Army of Blaník. According to legend, inside this mountain sleeps a host of magical knights who will awaken to defend the Czech land in its hour of greatest need. Travelers sometimes report hearing the sound of clashing swords or the neighing of horses from within the mountain. The mountain symbolizes hope and protection for the nation."
+    "description": "The Sleeping Army of Blaník. According to legend, inside this mountain sleeps a host of magical knights who will awaken to defend the Czech land in its hour of greatest need. Travelers sometimes report hearing the sound of clashing swords or the neighing of horses from within the mountain. The mountain symbolizes hope and protection for the nation.",
+    "image": ['blanik1.jpg', 'blanik2.jpg', 'blanik3.webp']
   },
   {
     "id": "bull-rock-cave",
     "name": "Bull Rock Cave",
     "lat": 49.30756041110619,
     "lon": 16.695293117536053,
-    "description": "Bull Rock Cave is an ancient cave in the Moravian Karst, known for its archaeological discoveries and mysterious atmosphere. Inside the cave, dozens of human skeletons, mostly women, were found, along with a bronze figurine of a bull, which gave the place its name. According to legend, the cave was used for ritual burials or cult ceremonies, and some believe that sacrifices took place here. Archaeologists consider it a sacred cave for the elite of the Hallstatt culture, where a chieftain and his entourage were laid to rest, possibly over several generations. The place is shrouded in numerous superstitions: people claim that at night, cries, moans, and laughter can be heard, and mysterious lights appear deep within the cave. The atmosphere of Bull Rock Cave attracts researchers, tourists, and artists, inspiring paintings and legends about ancient rituals, hidden treasures, and spirits guarding the secrets of the past. Despite its historical and mystical significance, the cave remains largely inaccessible to visitors in order to preserve it for scientific study and to protect the wintering of many bat species."
+    "description": "Bull Rock Cave is an ancient cave in the Moravian Karst, known for its archaeological discoveries and mysterious atmosphere. Inside the cave, dozens of human skeletons, mostly women, were found, along with a bronze figurine of a bull, which gave the place its name. According to legend, the cave was used for ritual burials or cult ceremonies, and some believe that sacrifices took place here. Archaeologists consider it a sacred cave for the elite of the Hallstatt culture, where a chieftain and his entourage were laid to rest, possibly over several generations. The place is shrouded in numerous superstitions: people claim that at night, cries, moans, and laughter can be heard, and mysterious lights appear deep within the cave. The atmosphere of Bull Rock Cave attracts researchers, tourists, and artists, inspiring paintings and legends about ancient rituals, hidden treasures, and spirits guarding the secrets of the past. Despite its historical and mystical significance, the cave remains largely inaccessible to visitors in order to preserve it for scientific study and to protect the wintering of many bat species.",
+    "image": ['bull1.jpg', 'bull2.jpg', 'bull3.jpeg']
   },
   {
     "id": "st-george-church",
     "name": "St. George’s Church in Lukova",
     "lat": 50.016647227185615,
     "lon": 13.160794615729785,
-    "description": "The Church of Ghosts. After its roof collapsed in 1968, the church was abandoned. In 2012, artist Jakub Hadrava filled it with plaster figures of praying parishioners. By candlelight they appear alive, and visitors report sighs and whispers."
+    "description": "The Church of Ghosts. After its roof collapsed in 1968, the church was abandoned. In 2012, artist Jakub Hadrava filled it with plaster figures of praying parishioners. By candlelight they appear alive, and visitors report sighs and whispers.",
+    "image": ['lukova1.jpg', 'lukova2.jpg', 'lukova3.jpg']
   },
   {
     "id": "velke-losiny-castle",
     "name": "Velke Losiny Castle",
     "lat": 50.02357154533136,
     "lon": 17.031736305938153,
-    "description": "The Witch Trials. In the 17th century, this castle hosted one of Europe’s bloodiest witch trials. Over a hundred women were executed, and archives still contain documents signed in blood. Visitors often sense the smell of smoke and hear cries near the old well."
+    "description": "The Witch Trials. In the 17th century, this castle hosted one of Europe’s bloodiest witch trials. Over a hundred women were executed, and archives still contain documents signed in blood. Visitors often sense the smell of smoke and hear cries near the old well.",
+    "image": ['losiny1.jpg', 'losiny2.webp', 'losiny3.jpg']
   },
   {
     "id": "tynec-church",
