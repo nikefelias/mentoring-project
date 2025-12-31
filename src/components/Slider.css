@@ -1,25 +1,26 @@
 .slider-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  width: 100%;
   padding: 40px 0;
 }
 
 .slider-viewport {
-  overflow: hidden;
+  overflow-x: auto;
   width: 100%;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
 }
 
 .slider-track {
-  display: flex;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 80%;
   gap: 12px;
-  transition: transform 0.25s ease-in-out;
-  will-change: transform;
+  padding-inline: 4px;
 }
 
 .slider-item {
-  flex: 0 0 auto;
-  width: 265px;
+  scroll-snap-align: start;
 }
 
 .slider-card {
@@ -37,7 +38,7 @@
   overflow: hidden;
   border-radius: 8px;
   height: 252px;
-  width: 265px;
+  width: 100%;
 
 }
 
@@ -63,14 +64,11 @@
   font-size: 12px;
 }
 
-.left-btn,
-.right-btn {
-  min-width: auto;
-  padding: 10px 14px;
+/* Optional: hide native scrollbars where supported */
+.slider-viewport::-webkit-scrollbar {
+  display: none;
 }
 
-.left-btn:disabled,
-.right-btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.slider-viewport {
+  scrollbar-width: none;
 }
