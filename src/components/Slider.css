@@ -37,9 +37,8 @@
 .slider-card__image {
   overflow: hidden;
   border-radius: 8px;
-  height: 252px;
-  width: 252px;
-
+  width: 100%;
+  aspect-ratio: 1 / 1;
 }
 
 .slider-card__image img {
