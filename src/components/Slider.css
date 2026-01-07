@@ -1,6 +1,6 @@
 .slider-wrapper {
   width: 100%;
-  padding: 40px 0;
+  /* padding: 40px 0; */
 }
 
 .slider-viewport {
@@ -24,7 +24,7 @@
 }
 
 .slider-card {
-  background: var(--color-card);
+  background: transparent;
   color: var(--color-button-text);
   padding: 12px;
   border-radius: 12px;
@@ -32,6 +32,8 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+   text-decoration: none;
+  color: inherit;
 }
 
 .slider-card__image {
@@ -70,4 +72,11 @@
 
 .slider-viewport {
   scrollbar-width: none;
+}
+
+
+.slider-card h2,
+.slider-card h3,
+.slider-card p {
+  text-decoration: none;
 }

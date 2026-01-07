@@ -1,12 +1,52 @@
-import { Link } from "react-router";
-import places from "../data/places";
+import { Link } from 'react-router'
+import places from '../data/places.js'
+import { useGpsContext } from '../context/GpsContext.jsx'
+import { getGPSDistance } from '../utils/geo-helpers'
+import Slider from './Slider.jsx'
+import "./Slider.css"
+
 
 export default function ClosestPlaces() {
+  const gps = useGpsContext()
+  const placesWithDistance = places.map((place) => ({
+    ...place,
+    distance: gps.isEnabled ? getGPSDistance(gps.position, place) : null,
+  }))
+
+  if (gps.isEnabled) {
+    placesWithDistance.sort((a, b) => a.distance - b.distance)
+  }
+
+  const basePath = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/')
+  const sliderItems = placesWithDistance.slice(0, 5).map((place) => {
+    const imageName = place?.image?.[0]
+    const imageSrc = imageName ? `${basePath}images/${imageName}` : null
+
+    return (
+      <Link className="slider-card" to={`${place.id}`} key={place.id}>
+        <div className="slider-card__image">
+          {imageSrc ? (
+            <img src={imageSrc} alt={place.name} />
+          ) : (
+            <div className="slider-card__body">
+              <p>No image</p>
+            </div>
+          )}
+        </div>
+        <div className="slider-card__body">
+          {/* <h3>{place.name}</h3> */}
+          {gps.isEnabled && place.distance != null && (
+            <h2>{(place.distance / 1000).toFixed(1)} km</h2>
+          )}
+        </div>
+      </Link>
+    )
+  })
+
   return (
     <>
       <h2>Closest places to you</h2>
-        <ul className="places-list">
-        </ul>
+      <Slider items={sliderItems} />
     </>
-  );
+  )
 }
