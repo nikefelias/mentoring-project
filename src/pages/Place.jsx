@@ -5,9 +5,13 @@ import useRadar from '../hooks/useRadar.js'
 import places from '../data/places.js'
 import PlaceDescription from '../components/place-description.jsx'
 import Slider from '../components/Slider.jsx'
+import { useGpsContext } from '../context/GpsContext.jsx'
+import { getGPSBearing, getGPSDistance } from '../assets/radar/geo-helpers.js'
 
 export default function Place() {
   const { id } = useParams()
+  const gps = useGpsContext()
+
   const selectedPlace = useMemo(
     () => places.find((place) => place.id === id) ?? null,
     [id],
@@ -45,6 +49,7 @@ export default function Place() {
         />
         
         <PlaceDescription place={selectedPlace} />
+        
       </main>
     </section>
   )

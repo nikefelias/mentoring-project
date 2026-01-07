@@ -1,4 +1,11 @@
 export default [
+    {
+    "id": "test",
+    "name": "Test",
+    "lat":  50.08722157235676,
+    "lon": 14.442878270484512,
+    "description": "Test location",
+  },
   {
     "id": "houska-castle",
     "name": "Houska Castle",
