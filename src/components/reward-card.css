@@ -1,0 +1,26 @@
+.reward-card {
+  background-color: var(--color-card);
+  border-radius: 10px;
+  padding: 14px;
+  max-width: 356px;
+  height: 156px;
+  margin: 0 auto;
+}
+
+.reward-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  display: block;
+}
+
+.reward-text {
+    color: var(--card-text);
+  text-align: center;
+  margin-top: 16px;
+}
+
+.reward-text h2 {
+  font-family: 'RobotoBold', sans-serif;
+  font-size: 18px;
+color: var(--color-bg);}

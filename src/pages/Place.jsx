@@ -7,6 +7,7 @@ import PlaceDescription from '../components/place-description.jsx'
 import Slider from '../components/Slider.jsx'
 import { useGpsContext } from '../context/GpsContext.jsx'
 import { getGPSBearing, getGPSDistance } from '../utils/geo-helpers'
+import RewardCard from '../components/reward-card.jsx'
 
 export default function Place() {
   const { id } = useParams()
@@ -65,11 +66,12 @@ export default function Place() {
                     <p>Distance: {(distance / 1000).toFixed(1)} km</p>
                     <p>Bearing: {bearing.toFixed(1)}&deg;</p>
         
-                    {distance < 100 && <p>Jsi na místě. Máš odměnu!</p>}
+                    {distance < 100 && <RewardCard />}
         
                   </>
                 : <p>Can't calculate distance, GPS not enabled</p>
               }
+              
         <PlaceDescription place={place} />
         
       </main>
