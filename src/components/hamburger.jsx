@@ -1,11 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import '../index.css'
 
 export default function HamburgerNav() {
   const [open, setOpen] = useState(false);
   const hamburgerRef = useRef(null);
   const navRef = useRef(null);
+  const { isAuth, logout } = useAuth();
+  const navigate = useNavigate();
 
   // клик вне меню
   useEffect(() => {
@@ -45,9 +48,24 @@ export default function HamburgerNav() {
       >
         <Link to="/" onClick={() => setOpen(false)}>Map</Link>
         <Link to="/about" onClick={() => setOpen(false)}>How it works</Link>
-        <Link to="/rewards" onClick={() => setOpen(false)}>My rewards</Link>
+        {isAuth && (
+          <Link to="/rewards" onClick={() => setOpen(false)}>My rewards</Link>
+        )}
         
-        <Link to="/signup" onClick={() => setOpen(false)}>Sign up</Link>
+        {isAuth ? (
+          <button
+            type="button"
+            onClick={async () => {
+              await logout();
+              setOpen(false);
+              navigate("/");
+            }}
+          >
+            Log out
+          </button>
+        ) : (
+          <Link to="/signup" onClick={() => setOpen(false)}>Sign up</Link>
+        )}
       </nav>
     </>
   );

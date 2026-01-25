@@ -7,6 +7,6 @@ export function AuthRoute() {
   return (
     isAuth
     ? <Outlet />
-    : <Navigate to="/login" />
+    : <Navigate to="/" replace />
   )
 }
