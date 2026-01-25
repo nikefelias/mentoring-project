@@ -1,0 +1,38 @@
+.register-page {
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 24px;
+  gap:40px;
+}
+
+.register {
+  width: 100%;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.register__field {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+
+.register__input {
+  height: 76px;
+  border-radius: 20px;
+  border: none;
+  background: var(--color-card);
+  padding: 0 24px;
+  font-size: 20px;
+  color: #1b1b1b;
+  outline: none;
+}
+
+.register__input::placeholder {
+  color: var(--card-text);
+}

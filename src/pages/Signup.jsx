@@ -1,3 +1,7 @@
+import Register from "../components/Register";
+
+
 export default function Signup() {
-  return <h1>Signup placeholder</h1>
+  return <Register />;
 }
+

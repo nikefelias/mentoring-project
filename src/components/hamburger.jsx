@@ -46,6 +46,7 @@ export default function HamburgerNav() {
         <Link to="/" onClick={() => setOpen(false)}>Map</Link>
         <Link to="/about" onClick={() => setOpen(false)}>How it works</Link>
         <Link to="/rewards" onClick={() => setOpen(false)}>My rewards</Link>
+        
         <Link to="/signup" onClick={() => setOpen(false)}>Sign up</Link>
       </nav>
     </>

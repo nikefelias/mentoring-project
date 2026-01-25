@@ -184,6 +184,8 @@ footer {
   display: flex;
   flex-direction: row;
   gap: 12px;
+ 
+  align-items:flex-start;
 }
 
 .card-step {
@@ -194,5 +196,20 @@ footer {
 }
 
 .place-distance {
-  color: var(--color-bg);
+  color: var(--color-text);
+  background-color: var(--color-button-reward);
+  padding: 4px 8px;
+  border-radius: 10px;
 }
+.about-image {
+  max-height: 160px;
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+}
+.step {
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+ padding: 0 16px;}

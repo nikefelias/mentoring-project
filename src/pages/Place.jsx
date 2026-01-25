@@ -1,22 +1,59 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router'
 import Radar from '../components/radar.jsx'
 import useRadar from '../hooks/useRadar.js'
-import places from '../data/places.js'
 import PlaceDescription from '../components/place-description.jsx'
 import Slider from '../components/Slider.jsx'
 import { useGpsContext } from '../context/GpsContext.jsx'
 import { getGPSBearing, getGPSDistance } from '../utils/geo-helpers'
 import RewardCard from '../components/reward-card.jsx'
+import UpdateReward from '../components/UpdateReward.jsx'
+import { supabase } from '../supabase/supabase.js'
 
 export default function Place() {
-  const { id } = useParams()
+  const { id: slug } = useParams()
   const gps = useGpsContext()
+  const [place, setPlace] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [loadError, setLoadError] = useState(null)
 
-  const place = useMemo(
-    () => places.find((place) => place.id === id) ?? null,
-    [id],
-  )
+  useEffect(() => {
+    let isActive = true
+
+    const getPlace = async () => {
+      setIsLoading(true)
+      setLoadError(null)
+      const { data, error } = await supabase
+        .from('places')
+        .select()
+        .eq('slug', slug)
+        .maybeSingle()
+
+      if (!isActive) {
+        return
+      }
+
+      if (error) {
+        console.error('Failed to load place:', error)
+        setLoadError(error.message ?? 'Failed to load place')
+        setPlace(null)
+      } else {
+        setPlace(data ?? null)
+      }
+      setIsLoading(false)
+    }
+
+    if (slug) {
+      getPlace()
+    } else {
+      setPlace(null)
+      setIsLoading(false)
+    }
+
+    return () => {
+      isActive = false
+    }
+  }, [slug])
   const { enableCompass } = useRadar()
 
   const hasGps = Boolean(
@@ -32,7 +69,13 @@ export default function Place() {
     : null
 
   const basePath = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/')
-  const placeImages = (place?.image ?? []).map(
+  const imageList = Array.isArray(place?.image)
+    ? place.image
+    : typeof place?.image === 'string'
+        ? place.image.replace(/[{}]/g, '').split(',').filter(Boolean)
+        : []
+
+  const placeImages = imageList.map(
     (imageName) => `${basePath}images/${imageName}`,
   )
 
@@ -48,14 +91,27 @@ export default function Place() {
 
   return (
     <section className="content-container">
-      {!place && (
+      {isLoading && (
+        <div style={{ marginBottom: 24 }}>
+          <p>Loading place...</p>
+        </div>
+      )}
+      {!place && !isLoading && loadError && (
+        <div style={{ marginBottom: 24 }}>
+          <p>Failed to load place: {loadError}</p>
+          <Link to="/">Back to list</Link>
+        </div>
+      )}
+      {!place && !isLoading && !loadError && (
         <div style={{ marginBottom: 24 }}>
           <p>Place is not found</p>
           <Link to="/">Back to list</Link>
         </div>
       )}
       <main className="place-layout">
-        {sliderItems.length > 0 && <Slider items={sliderItems} step={180} />}
+        {place && sliderItems.length > 0 && (
+          <Slider items={sliderItems} step={180} />
+        )}
         <Radar
           goalPlace={place}
           onEnableCompass={enableCompass}
@@ -72,7 +128,8 @@ export default function Place() {
                 : <p>Can't calculate distance, GPS not enabled</p>
               }
               
-        <PlaceDescription place={place} />
+        {place && <PlaceDescription place={place} />}
+        <UpdateReward />
         
       </main>
     </section>

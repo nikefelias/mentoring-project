@@ -5,13 +5,14 @@ import Footer from "./components/Footer.jsx";
 import { Outlet } from "react-router";
 import { useGpsContext } from './context/GpsContext'
 import { useEffect } from "react";
+import { useAuth } from './context/AuthContext'
+
 
 function App() {
+  const {isAuth} = useAuth()
   const gps = useGpsContext()
 
      useEffect(() => {
-       // initialize GPS
-       // → when initialized → use gps.setCurrentPosition()
      }, [])
   
   return (

@@ -1,12 +1,11 @@
 import { Link } from 'react-router'
-import places from '../data/places.js'
 import { useGpsContext } from '../context/GpsContext.jsx'
 import { getGPSDistance } from '../utils/geo-helpers'
 import Slider from './Slider.jsx'
 import "./Slider.css"
 
 
-export default function ClosestPlaces() {
+export default function ClosestPlaces({ places = [] }) {
   const gps = useGpsContext()
   const placesWithDistance = places.map((place) => ({
     ...place,
@@ -19,11 +18,17 @@ export default function ClosestPlaces() {
 
   const basePath = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/')
   const sliderItems = placesWithDistance.slice(0, 5).map((place) => {
-    const imageName = place?.image?.[0]
+    const imageList = Array.isArray(place?.image)
+      ? place.image
+      : typeof place?.image === 'string'
+          ? place.image.replace(/[{}]/g, '').split(',').filter(Boolean)
+          : []
+    const imageName = imageList[0]
     const imageSrc = imageName ? `${basePath}images/${imageName}` : null
+    const placeId = place.slug ?? place.id
 
     return (
-      <Link className="slider-card" to={`${place.id}`} key={place.id}>
+      <Link className="slider-card" to={`${placeId}`} key={placeId}>
         <div className="slider-card__image">
           {imageSrc ? (
             <img src={imageSrc} alt={place.name} />

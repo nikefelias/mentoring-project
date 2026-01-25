@@ -11,6 +11,8 @@ import About from './pages/About.jsx'
 import Signup from './pages/Signup.jsx'
 import Rewards from './pages/Rewards.jsx'
 import { GpsContextProvider } from './context/GpsContext.jsx'
+import {AuthProvider} from './context/AuthContext'
+import { AuthRoute } from './components/AuthRoute.jsx'
 
 
 import {
@@ -24,17 +26,23 @@ import {
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GpsContextProvider>
+      <AuthProvider>
       <BrowserRouter basename="/mentoring-project">
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
             <Route path=":id" element={<Place />} />
             <Route path="about" element={<About />} />
+               <Route element={<AuthRoute />}>
+               <Route path="rewards" element={<Rewards />} />
+               </Route>
             <Route path="signup" element={<Signup />} />
-            <Route path="rewards" element={<Rewards />} />
+          
+            
           </Route>
         </Routes>
       </BrowserRouter>
+      </AuthProvider>
     </GpsContextProvider>
   </StrictMode>,
 )
