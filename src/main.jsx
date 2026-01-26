@@ -27,7 +27,7 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <GpsContextProvider>
       <AuthProvider>
-      <BrowserRouter basename="/mentoring-project">
+      <BrowserRouter basename="/">
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<Home />} />
