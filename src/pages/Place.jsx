@@ -123,10 +123,12 @@ const placeImages = imageList.map((filename) => {
                   </>
                 : <p>Can't calculate distance, GPS not enabled</p>
               }
-        <RewardBoxInactive />   
-        <RewardBoxActive />     
+        {hasGps && distance != null && distance < 100 && <RewardBoxActive />}
+        {hasGps && distance != null && distance >= 100 && (
+          <RewardBoxInactive distance={distance} />
+        )}
         {place && <PlaceDescription place={place} />}
-        <UpdateReward />
+    
         
       </main>
     </section>

@@ -1,8 +1,17 @@
 import React from 'react';
 import '../App.css';
 import './rewardBox.css';
+import { useGpsContext } from '../context/GpsContext.jsx'
 
-const RewardBoxInactive = () => {
+
+const RewardBoxInactive = ({ distance, hasGps }) => {
+  const distanceKm = distance != null ? (distance / 1000).toFixed(1) : null;
+  const gps = useGpsContext();
+  const isGpsEnabled = Boolean(
+    gps?.isEnabled &&
+    gps?.position?.lat != null &&
+    gps?.position?.lon != null, )
+
   return (
     <div className="reward-container"> 
        <img
@@ -11,9 +20,17 @@ const RewardBoxInactive = () => {
         className="reward-image"
       />
       <div className="reward-text-content">
-        <h3 className="reward-title">You’re almost there!</h3>
+        <h3 className="reward-title">
+
+          {isGpsEnabled === true
+            ? `You're almost there!`
+            : 'Enable GPS to see the distance to unlock your reward.'}
+
+        </h3>
         <p className="reward-description">
-          Get within 100 meters to unlock your reward.
+          {distanceKm != null
+            ? `Get within ${distanceKm} km to unlock your reward.`
+            : ''}
         </p>
       </div>
     </div>
