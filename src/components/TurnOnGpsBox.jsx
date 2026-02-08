@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import './RewardBox.css';
 
-const RewardBoxActive = () => {
+const TurnOnGpsBox = () => {
   return (
     <div className="reward-container"> 
       <div className="reward-text-content">
@@ -14,4 +14,4 @@ We can't find you! To get your reward, please turn on GPS in your device setting
   );
 };
 
-export default RewardBoxActive;
+export default TurnOnGpsBox;
