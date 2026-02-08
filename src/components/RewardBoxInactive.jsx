@@ -29,7 +29,7 @@ const RewardBoxInactive = ({ distance }) => {
         </h3>
         <p className="reward-description">
           {distanceKm != null
-            ? `Get within ${distanceKm} km to unlock your reward.`
+            ? `Get within 100 m to unlock your reward.`
             : ''}
         </p>
       </div>

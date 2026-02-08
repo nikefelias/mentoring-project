@@ -115,16 +115,16 @@ const placeImages = imageList.map((filename) => {
         />
         {hasGps && distance != null && bearing != null
                 ? <>
-                    <p>My current position: {gps.position.lat}, {gps.position.lon}</p>
+                    {/* <p>My current position: {gps.position.lat}, {gps.position.lon}</p>
                     <p>Distance: {(distance / 1000).toFixed(1)} km</p>
-                    <p>Bearing: {bearing.toFixed(1)}&deg;</p>
+                    <p>Bearing: {bearing.toFixed(1)}&deg;</p> */}
         
                     {distance < 100 && <RewardCard />}
         
                   </>
                 : <TurnOnGpsBox />
               }
-        {hasGps && distance != null && distance < 100 && <RewardBoxActive />}
+        {/* {hasGps && distance != null && distance < 100 && <RewardBoxActive />} */}
         {hasGps && distance != null && distance >= 100 && (
           <RewardBoxInactive distance={distance} />
         )}

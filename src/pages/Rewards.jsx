@@ -38,21 +38,43 @@ export const Secret = () => {
     console.log(user)
     console.log(x)
   }
-
   return (
     <>
-      <h2>Tajemství</h2>
+      <h1>My Rewards</h1>
 
-      <p>Tajná stránka <strong>jen pro registrované uživatele</strong>.</p>
+      <p>View your visit history, check-in times, and rewards earned for each location</p>
 
-      <h3>Moje odmeny</h3>
       <ul>
         {rewards !== null &&
-          rewards.map(reward => <li key={reward.id}>
-            {reward.places.name} ({reward.created_at})
-            <img src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/places/${reward.places.images[0].filename}`} />
-            <img src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/rewards/${reward.places.reward}`} />
-          </li>)
+          rewards.map(reward => {
+            const placeImage = reward?.places?.images?.[0]?.filename
+            const rewardImage = reward?.places?.reward
+            const createdAt = reward?.created_at
+              ? new Date(reward.created_at).toLocaleString('ru-RU', {
+                  day: '2-digit',
+                  month: '2-digit',
+                  year: 'numeric',
+                  hour: '2-digit',
+                  minute: '2-digit',
+                })
+              : '—'
+            return (
+              <li key={reward.id}>
+                <h3>{reward?.places?.name ?? 'Unknown place'} </h3>{createdAt}
+
+                {placeImage && (
+                  <img
+                    src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/places/${placeImage}`}
+                  />
+                )}
+                {rewardImage && (
+                  <img
+                    src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/rewards/${rewardImage}`}
+                  />
+                )}
+              </li>
+            )
+          })
         }
       </ul>
 
@@ -65,4 +87,3 @@ export const Secret = () => {
 }
 
 export default Secret;
-

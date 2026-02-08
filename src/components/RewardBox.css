@@ -22,6 +22,10 @@
   flex-direction: column; 
   padding: 20px;
 }
+.reward-text-content-gps h2 {
+   padding-top: 20px;
+   text-align: center;
+}
 
 .reward-title {
   color: var(--color-bg);

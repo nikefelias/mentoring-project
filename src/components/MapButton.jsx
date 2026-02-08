@@ -1,4 +1,5 @@
 import React from 'react'
+import '../App.css'
 
 
 export default function MapButton({ lat, lon, className = '', label = 'Open in Google Maps' }) {
@@ -14,7 +15,7 @@ export default function MapButton({ lat, lon, className = '', label = 'Open in G
 
     <button
             type="button"
-      className={className}
+      className={`map-button ${className}`.trim()}
       onClick={handleClick}
       disabled={!hasCoords}
           >
