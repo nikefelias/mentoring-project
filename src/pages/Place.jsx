@@ -12,6 +12,7 @@ import { supabase } from '../supabase/supabase.js'
 import RewardBoxActive from '../components/RewardBoxActive.jsx'
 import RewardBoxInactive from '../components/RewardBoxInactive.jsx'
 import { useAuth } from '../context/AuthContext.jsx'
+import TurnOnGpsBox from '../components/TurnOnGpsBox.jsx'
 
 export default function Place() {
   const { id: slug } = useParams()
@@ -121,7 +122,7 @@ const placeImages = imageList.map((filename) => {
                     {distance < 100 && <RewardCard />}
         
                   </>
-                : <p>Can't calculate distance, GPS not enabled</p>
+                : <TurnOnGpsBox.jsx />
               }
         {hasGps && distance != null && distance < 100 && <RewardBoxActive />}
         {hasGps && distance != null && distance >= 100 && (
