@@ -119,7 +119,7 @@ const placeImages = imageList.map((filename) => {
                     <p>Distance: {(distance / 1000).toFixed(1)} km</p>
                     <p>Bearing: {bearing.toFixed(1)}&deg;</p> */}
         
-                    {distance < 100 && <RewardCard />}
+                    {isAuth && distance < 100 && <RewardCard />}
         
                   </>
                 : <TurnOnGpsBox />
