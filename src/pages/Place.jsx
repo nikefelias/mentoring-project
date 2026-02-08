@@ -122,7 +122,7 @@ const placeImages = imageList.map((filename) => {
                     {distance < 100 && <RewardCard />}
         
                   </>
-                : <TurnOnGpsBox.jsx />
+                : <TurnOnGpsBox />
               }
         {hasGps && distance != null && distance < 100 && <RewardBoxActive />}
         {hasGps && distance != null && distance >= 100 && (
