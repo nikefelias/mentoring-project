@@ -4,7 +4,7 @@ import './rewardBox.css';
 import { useGpsContext } from '../context/GpsContext.jsx'
 
 
-const RewardBoxInactive = ({ distance, hasGps }) => {
+const RewardBoxInactive = ({ distance }) => {
   const distanceKm = distance != null ? (distance / 1000).toFixed(1) : null;
   const gps = useGpsContext();
   const isGpsEnabled = Boolean(
