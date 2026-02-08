@@ -1,6 +1,6 @@
 import React from 'react';
 import '../App.css';
-import './rewardBox.css';
+import './RewardBox.css';
 import { useGpsContext } from '../context/GpsContext.jsx'
 
 
