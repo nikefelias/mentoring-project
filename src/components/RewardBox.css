@@ -1,0 +1,33 @@
+.reward-container {
+  display: flex;
+  align-items: center;
+  height: 135px;
+  width: 100%; 
+  max-width: 500px;
+  background-color: var(--color-card);
+  border-radius: 20px; 
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.reward-image {
+  width: 80px; 
+  height: 80px;
+  object-fit: contain;
+  margin: 0 20px;
+}
+
+.reward-text-content {
+  display: flex;
+  flex-direction: column; 
+  padding: 20px;
+}
+
+.reward-title {
+  color: var(--color-bg);
+  padding:0;
+  margin:0;
+}
+.reward-description {
+  color: var(--card-text);
+}

@@ -5,12 +5,14 @@ import { getGPSDistance, getGPSBearing } from '../assets/radar/geo-helpers'
 import { initGPS } from '../assets/radar/gps'
 import { log } from '../assets/radar/log'
 import arrowIcon from '../assets/icons/arrow-white.svg'
+import MapButton from './MapButton.jsx'
 
 export default function Radar({ onEnableCompass, goalPlace }) {
   const radarGoalRef = useRef(null)
   const goalArrowRef = useRef(null)
   const compassBtnRef = useRef(null)
   const logRef = useRef(null)
+  const [isCompassEnabled, setIsCompassEnabled] = useState(false)
 
   const [currentPos, setCurrentPos] = useState({
     lon: null,
@@ -103,12 +105,28 @@ export default function Radar({ onEnableCompass, goalPlace }) {
 
   return (
     <div className="radar-card">
-      <div id="radar">
-        <div id="radar-outer">
-          <div id="radar-inner" />
-          <div id="radar-center" />
-          <div id="radar-goal" ref={radarGoalRef} />
+      <div className={`radar-container ${isCompassEnabled ? '' : 'radar--inactive'}`}>
+        <div id="radar">
+          <div id="radar-outer">
+            <div id="radar-inner" />
+            <div id="radar-center" />
+            <div id="radar-goal" ref={radarGoalRef} />
+          </div>
         </div>
+        {!isCompassEnabled && (
+          <button
+            id="compass-btn"
+            className="btn"
+            onClick={() => {
+              setIsCompassEnabled(true)
+              onEnableCompass?.()
+            }}
+            type="button"
+            ref={compassBtnRef}
+          >
+            Enable compass
+          </button>
+        )}
       </div>
 
       <div id="goal">
@@ -118,16 +136,13 @@ export default function Radar({ onEnableCompass, goalPlace }) {
           </div>
           <img id="goal-arrow" src={arrowIcon} alt="arrow" ref={goalArrowRef} />
         </div>
-
-        <button
-          id="compass-btn"
+        <MapButton
           className="btn"
-          onClick={onEnableCompass}
-          type="button"
-          ref={compassBtnRef}
-        >
-          Enable compass
-        </button>
+          lat={goalPlace?.lat}
+          lon={goalPlace?.lon}
+          label="Open in Google Maps"
+        />
+
       </div>
 
       {/* <div id="info">

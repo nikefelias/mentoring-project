@@ -69,14 +69,17 @@ h1 {
   text-align: center;
 }
 
-h2,
+
 h3 {
   font-family: 'RobotoBold', sans-serif;
   text-transform: uppercase;
   color: var(--color-text);
 }
 
-h2 { font-size: 24px; }
+h2 { font-size: 24px; 
+font-family: 'RobotoBold', sans-serif;
+
+  color: var(--color-text);}
 h3 { font-size: 14px; }
 
 h4 {

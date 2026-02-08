@@ -56,6 +56,18 @@
   padding: 40px 0;
 }
 
+.radar-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.radar--inactive #radar-outer {
+  opacity: 0.35;
+  filter: grayscale(0.4);
+}
+
 #radar {
  aspect-ratio: 1;
 }
@@ -127,6 +139,14 @@
   gap: 12px;
 }
 
+#compass-btn {
+  position: absolute;
+  bottom: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
 
 #goal-distance {
   font-family: 'Roboto';
@@ -134,5 +154,3 @@
   font-size: 40px;
   color: var(--color-text)
 }
-
-

@@ -64,7 +64,7 @@ export default function HamburgerNav() {
             Log out
           </button>
         ) : (
-          <Link to="/signup" onClick={() => setOpen(false)}>Sign up</Link>
+          <Link to="/register" onClick={() => setOpen(false)}>Sign In</Link>
         )}
       </nav>
     </>

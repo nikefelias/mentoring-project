@@ -9,6 +9,9 @@ import { getGPSBearing, getGPSDistance } from '../utils/geo-helpers'
 import RewardCard from '../components/reward-card.jsx'
 import UpdateReward from '../components/UpdateReward.jsx'
 import { supabase } from '../supabase/supabase.js'
+import RewardBoxActive from '../components/RewardBoxActive.jsx'
+import RewardBoxInactive from '../components/RewardBoxInactive.jsx'
+import { useAuth } from '../context/AuthContext.jsx'
 
 export default function Place() {
   const { id: slug } = useParams()
@@ -16,22 +19,22 @@ export default function Place() {
   const [place, setPlace] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [loadError, setLoadError] = useState(null)
+ const { isAuth } = useAuth();
 
   useEffect(() => {
-    let isActive = true
+   
 
     const getPlace = async () => {
       setIsLoading(true)
       setLoadError(null)
       const { data, error } = await supabase
         .from('places')
-        .select()
+        .select('*, rewards (*), images(filename)')
         .eq('slug', slug)
         .maybeSingle()
 
-      if (!isActive) {
-        return
-      }
+        console.log(data)
+      
 
       if (error) {
         console.error('Failed to load place:', error)
@@ -49,10 +52,6 @@ export default function Place() {
       setPlace(null)
       setIsLoading(false)
     }
-
-    return () => {
-      isActive = false
-    }
   }, [slug])
   const { enableCompass } = useRadar()
 
@@ -68,17 +67,14 @@ export default function Place() {
     ? getGPSBearing(gps.position, place)
     : null
 
-  const basePath = (import.meta.env.BASE_URL ?? '/').replace(/\/?$/, '/')
-  const imageList = Array.isArray(place?.image)
-    ? place.image
-    : typeof place?.image === 'string'
-        ? place.image.replace(/[{}]/g, '').split(',').filter(Boolean)
-        : []
+ const imageList = Array.isArray(place?.images)
+  ? place.images.map((img) => img.filename)
+  : []
 
-  const placeImages = imageList.map(
-    (imageName) => `${basePath}images/${imageName}`,
-  )
-
+const placeImages = imageList.map((filename) => {
+  const { data } = supabase.storage.from('images').getPublicUrl(`places/${filename}`)
+  return data.publicUrl
+})
   const sliderItems = placeImages.map((src, index) => {
     return (
       <div className="slider-card__image" key={src ?? index}>
@@ -127,7 +123,8 @@ export default function Place() {
                   </>
                 : <p>Can't calculate distance, GPS not enabled</p>
               }
-              
+        <RewardBoxInactive />   
+        <RewardBoxActive />     
         {place && <PlaceDescription place={place} />}
         <UpdateReward />
         

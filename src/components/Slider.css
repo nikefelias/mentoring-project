@@ -65,7 +65,6 @@
   font-size: 12px;
 }
 
-/* Optional: hide native scrollbars where supported */
 .slider-viewport::-webkit-scrollbar {
   display: none;
 }

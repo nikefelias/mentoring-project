@@ -33,7 +33,7 @@ export const Login = ({ onShowRegister }) => {
 
 	return (
 		<>
-			<h2>Sign In</h2>
+			<h1>Sign In</h1>
 
 			<form onSubmit={handleSubmit}>
 				<div className="register-page">
@@ -63,7 +63,7 @@ export const Login = ({ onShowRegister }) => {
 
 					<button type="submit" className="button register__button">Sign in</button>
 
-					<p>
+					<p className='have_account'>
 						Don't have an account?{" "}
 						{onShowRegister ? (
 							<button type="button" onClick={onShowRegister}>

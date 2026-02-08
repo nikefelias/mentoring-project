@@ -14,16 +14,14 @@ export default function Home() {
   const [loadError, setLoadError] = useState(null);
 
   useEffect(() => {
-    let isActive = true;
-
+    
     const getPlaces = async () => {
       setIsLoading(true);
       setLoadError(null);
-      const { data, error } = await supabase.from("places").select();
-
-      if (!isActive) {
-        return;
-      }
+      const { data, error } = await supabase
+        .from("places")
+        .select("*, images(filename)")
+        .select("*, images(filename, main)");
 
       if (error) {
         console.error("Failed to load places:", error);
@@ -37,9 +35,7 @@ export default function Home() {
 
     getPlaces();
 
-    return () => {
-      isActive = false;
-    };
+
   }, []);
 
   const placesWithDistance = places.map((place) => {
@@ -67,6 +63,27 @@ export default function Home() {
                 to={`${place.slug ?? place.id}`}
               >
                 <h2>{place.name}</h2>
+
+
+                  {(() => {
+                  const mainImage = Array.isArray(place?.images)
+                    ? place.images.find((img) => img.main === 1) ||
+                      place.images[0]
+                    : null;
+                  const imageSrc = mainImage
+                    ? supabase.storage
+                        .from("images")
+                        .getPublicUrl(`places/${mainImage.filename}`).data
+                        .publicUrl
+                    : null;
+                  return imageSrc ? (
+                     <img
+                      className="place-card-image"
+                      src={imageSrc}
+                      alt={place.name}
+                    />
+                  ) : null;
+                })()}
                 <p>{place.short_description}</p>
                 {gps.isEnabled && place.distance != null && (
                   <span className="place-distance">

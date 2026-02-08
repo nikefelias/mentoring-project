@@ -9,7 +9,7 @@ export default function Signup() {
     return (
       <>
         <Register />
-        <p>
+        <p className='have_account'>
           Already have an account?{" "}
           <button type="button" onClick={() => setMode("login")}>
             Sign in

@@ -1,11 +1,4 @@
-/* .reward-card {
-  background-color: var(--color-card);
-  border-radius: 10px;
-  padding: 14px;
-  max-width: 356px;
-  height: 156px;
-  margin: 0 auto;
-} */
+
 
 .reward-card {
   background-color: var(--color-card);
@@ -18,12 +11,12 @@
   padding: 14px;
 }
 
-.reward-image {
+/* .reward-image {
   width: 120px;
   height: 120px;
   margin: 0 auto;
   display: block;
-}
+} */
 
 .reward-text {
     color: var(--card-text);

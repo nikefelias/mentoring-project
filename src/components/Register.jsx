@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Register.css";
 import "../App.css"
-import {supabase} from './../supabase/supabase.js'
+import {supabase} from '../supabase/supabase.js'
 
 
 export default function Register() {
@@ -43,7 +43,7 @@ export default function Register() {
 
   return (
     <>
-    <h2>Registrace</h2>
+    <h1>Registrace</h1>
     {message && <p>{message}</p>}
     <form onSubmit={handleSubmit}>
     <div className="register-page">

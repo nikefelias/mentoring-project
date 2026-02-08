@@ -15,7 +15,7 @@ export default function Hero() {
         travelers who love mystery, folklore, and hidden gems.
       </p>
       <div className="buttons">
-        <Link className="button-link" to="/Signup">
+        <Link className="button-link" to="/register">
           <button type="button">Register</button>
         </Link>
         <Link className="button-link" to="/About">

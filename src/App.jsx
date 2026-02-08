@@ -9,9 +9,7 @@ import { useEffect } from "react";
 
 
 function App() {
-  // const {isAuth} = useAuth()
-  // const gps = useGpsContext()
-
+  
      useEffect(() => {
      }, [])
   

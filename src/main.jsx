@@ -8,7 +8,7 @@ import App from './App.jsx'
 import Home from './pages/Home.jsx'
 import Place from './pages/Place.jsx'
 import About from './pages/About.jsx'
-import Signup from './pages/Signup.jsx'
+import Register from './components/Register.jsx'
 import Rewards from './pages/Rewards.jsx'
 import { GpsContextProvider } from './context/GpsContext.jsx'
 import {AuthProvider} from './context/AuthContext'
@@ -20,6 +20,7 @@ import {
   Routes,
   Route,
 } from 'react-router'
+import Signup from './pages/Signup.jsx'
 
 
 
@@ -36,7 +37,7 @@ createRoot(document.getElementById('root')).render(
                <Route element={<AuthRoute />}>
                <Route path="rewards" element={<Rewards />} />
                </Route>
-            <Route path="signup" element={<Signup />} />
+            <Route path="register" element={<Signup />} />
           
             
           </Route>
