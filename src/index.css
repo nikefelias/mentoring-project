@@ -235,18 +235,22 @@ justify-content: center;
 /* REWARDS LIST */
 .rewards-list {
   list-style: none;
-  padding-left: 0;
-  margin: 0;
-
+  margin: 0 auto;
+  padding: 0;
+  width: min(100%, 420px);
 }
 
+.rewards-list li {
+  width: 100%;
+  text-align: center;
+}
+
+.my-rewards-images {
+  display: flex;
+  justify-content: center; 
+}
 
 .my-rewards-image {
   width: 240px;
   border-radius: 8px;
-  aspect-ratio: 1 / 1;
-}
-.my-rewards-images {
-    display: flex;
-    flex-direction: row;
 }

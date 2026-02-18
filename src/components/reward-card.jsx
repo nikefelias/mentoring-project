@@ -1,18 +1,21 @@
 import "../App.css";
 import "../index.css";
 import "./reward-card.css"
-import rewardImage from "/images/reward-active.svg"
 
-function RewardCard() {
+function RewardCard({ rewardImageUrl }) {
   return (
     <>
     <div className="reward-card">
       <div>
-        <img src={rewardImage} alt="" className="reward-image"/>
+         <img
+          src={rewardImageUrl}
+          alt="Reward"
+          className="reward-image"
+        />
       </div>
       <div className="reward-text">
-        <h2>YOUR REWARD</h2>
-        <p>Congratulations, you have achieved your aim!</p>
+        <h2 className="reward-title">You did it!</h2>
+        <p className="reward-description">Destination reached! Your reward is now saved in "My Rewards".</p>
       </div>
       </div>
     </>

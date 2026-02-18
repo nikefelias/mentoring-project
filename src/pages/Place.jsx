@@ -22,7 +22,7 @@ export default function Place() {
   const [place, setPlace] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [loadError, setLoadError] = useState(null);
-  const { isAuth } = useAuth();
+  const { isAuth, user } = useAuth();
 
   useEffect(() => {
     const getPlace = async () => {
@@ -55,11 +55,27 @@ export default function Place() {
   }, [slug]);
   const { enableCompass } = useRadar();
 
+  const updateReward = async () => {
+    if (!user?.id) return
+    const {error} = await supabase
+      .from('rewards')
+      .insert({
+        user_id: user.id,
+        place_id: place.id,
+      })
+    if (error) {
+      console.log(error)
+    }
+  }
+
   const hasGps = Boolean(
     gps?.isEnabled && gps?.position?.lat != null && gps?.position?.lon != null,
   );
   const distance = hasGps && place ? getGPSDistance(gps.position, place) : null;
   const bearing = hasGps && place ? getGPSBearing(gps.position, place) : null;
+
+  const hasReward = place.rewards?.length === 1;
+  if (distance !==null && distance <100 && !hasReward) {updateReward()} 
 
   const imageList = Array.isArray(place?.images)
     ? place.images.map((img) => img.filename)
@@ -71,6 +87,7 @@ export default function Place() {
       .getPublicUrl(`places/${filename}`);
     return data.publicUrl;
   });
+
   const sliderItems = placeImages.map((src, index) => {
     return (
       <div className="slider-card__image" key={src ?? index}>
@@ -78,6 +95,8 @@ export default function Place() {
       </div>
     );
   });
+
+
 
   return (
     <section className="content-container">
@@ -105,19 +124,17 @@ export default function Place() {
         <Radar goalPlace={place} onEnableCompass={enableCompass} />
         {!hasGps ? (
           <TurnOnGpsBox />
-        ) : (      
-          !isAuth ?  (
-            <RewardBoxRegister />
-          ) : (
- <>
-  {distance < 100 && <RewardCard />}
+        ) : !isAuth ? (
+          <RewardBoxRegister />
+        ) : (
+          hasReward ? <RewardCard /> :
+          <>
+            {distance < 100 && <RewardCard />}
             {distance != null && distance >= 100 && (
               <RewardBoxInactive distance={distance} />
             )}
-            </>
-          ) 
-        )
-      }
+          </>
+        )}
         {place && <PlaceDescription place={place} />}
       </main>
     </section>

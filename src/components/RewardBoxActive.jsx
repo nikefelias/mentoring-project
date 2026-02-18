@@ -11,9 +11,9 @@ const RewardBoxActive = () => {
         className="reward-image"
       />
       <div className="reward-text-content">
-        <h2 className="reward-title">YOUR REWARD</h2>
+        <h2 className="reward-title">Your Reward</h2>
         <p className="reward-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Lorem Ipsum
         </p>
       </div>
     </div>
