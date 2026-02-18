@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router";
 import Radar from "../components/radar.jsx";
 import useRadar from "../hooks/useRadar.js";
@@ -24,49 +24,47 @@ export default function Place() {
   const [loadError, setLoadError] = useState(null);
   const { isAuth, user } = useAuth();
 
-  useEffect(() => {
-    const getPlace = async () => {
-      setIsLoading(true);
-      setLoadError(null);
-      const { data, error } = await supabase
-        .from("places")
-        .select("*, rewards (*), images(filename)")
-        .eq("slug", slug)
-        .maybeSingle();
+  const getPlace = useCallback(async () => {
+    setIsLoading(true);
+    setLoadError(null);
+    const { data, error } = await supabase
+      .from("places")
+      .select("*, rewards (*), images(filename)")
+      .eq("slug", slug)
+      .maybeSingle();
 
-      console.log(data);
+    console.log(data);
 
-      if (error) {
-        console.error("Failed to load place:", error);
-        setLoadError(error.message ?? "Failed to load place");
-        setPlace(null);
-      } else {
-        setPlace(data ?? null);
-      }
-      setIsLoading(false);
-    };
-
-    if (slug) {
-      getPlace();
-    } else {
+    if (error) {
+      console.error("Failed to load place:", error);
+      setLoadError(error.message ?? "Failed to load place");
       setPlace(null);
-      setIsLoading(false);
+    } else {
+      setPlace(data ?? null);
     }
+    setIsLoading(false);
   }, [slug]);
+
+  useEffect(() => {
+    const loadData = async () => {
+      await getPlace();
+    };
+    loadData();  
+  }, [getPlace]);
+
   const { enableCompass } = useRadar();
 
   const updateReward = async () => {
-    if (!user?.id) return
-    const {error} = await supabase
-      .from('rewards')
-      .insert({
-        user_id: user.id,
-        place_id: place.id,
-      })
+    if (!user?.id) return;
+    const { error } = await supabase.from("rewards").insert({
+      user_id: user.id,
+      place_id: place.id,
+    });
     if (error) {
-      console.log(error)
+      console.log(error);
     }
-  }
+    await getPlace();
+  };
 
   const hasGps = Boolean(
     gps?.isEnabled && gps?.position?.lat != null && gps?.position?.lon != null,
@@ -74,8 +72,10 @@ export default function Place() {
   const distance = hasGps && place ? getGPSDistance(gps.position, place) : null;
   const bearing = hasGps && place ? getGPSBearing(gps.position, place) : null;
 
-  const hasReward = place.rewards?.length === 1;
-  if (distance !==null && distance <100 && !hasReward) {updateReward()} 
+  const hasReward = place?.rewards?.length === 1;
+  if (distance !== null && distance < 100 && !hasReward) {
+    updateReward();
+  }
 
   const imageList = Array.isArray(place?.images)
     ? place.images.map((img) => img.filename)
@@ -95,8 +95,6 @@ export default function Place() {
       </div>
     );
   });
-
-
 
   return (
     <section className="content-container">
@@ -126,8 +124,9 @@ export default function Place() {
           <TurnOnGpsBox />
         ) : !isAuth ? (
           <RewardBoxRegister />
+        ) : hasReward ? (
+          <RewardCard />
         ) : (
-          hasReward ? <RewardCard /> :
           <>
             {distance < 100 && <RewardCard />}
             {distance != null && distance >= 100 && (
