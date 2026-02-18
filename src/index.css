@@ -27,10 +27,19 @@
 /* HERO */
 .buttons {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 auto;
+  width: 100%;
+  gap: 12px;
+}
+
+.buttons .button-link {
+  flex: 1;
+  min-width: 0;
+}
+
+.buttons button {
+  width: 100%;
+  flex: 1;
+  min-width: 0;
 }
 
 /* MAP */
@@ -221,4 +230,23 @@ justify-content: center;
   object-fit: cover;
   display: block;
   border-radius: 12px;
+}
+
+/* REWARDS LIST */
+.rewards-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+
+}
+
+
+.my-rewards-image {
+  width: 240px;
+  border-radius: 8px;
+  aspect-ratio: 1 / 1;
+}
+.my-rewards-images {
+    display: flex;
+    flex-direction: row;
 }

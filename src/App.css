@@ -129,3 +129,153 @@ button:active {
     color:var(--color-text)
 
 }
+
+/* SELECT */
+/* wrapper */
+.region-filter {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.view-toggle {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.view-toggle-btn {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid var(--color-button-reward);
+}
+
+.view-toggle-btn:hover {
+  background: color-mix(in srgb, var(--color-button-reward) 30%, transparent);
+}
+
+.view-toggle-btn.active {
+  background: var(--color-button-reward);
+  color: var(--color-button-text);
+}
+
+.region-filter label {
+  font-size: 13px;
+  color: var(--card-text);
+}
+
+/* main field */
+.region-custom__control {
+  width: 100% !important;
+  min-height: 0 !important;
+  padding: 12px !important;
+  border-radius: 10px !important;
+  border: 1px solid transparent !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 1em !important;
+  background: var(--color-card) !important;
+  color: var(--card-text) !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+/* hover like .region-select:hover */
+.region-custom__control:hover {
+  border-color: var(--color-button-reward) !important;
+}
+
+/* disabled like .region-select:disabled */
+.region-custom__control--is-disabled {
+  opacity: 0.6 !important;
+  cursor: not-allowed !important;
+  background-color: #f3f4f6 !important;
+}
+
+/* value text */
+.region-custom__single-value,
+.region-custom__input-container,
+.region-custom__placeholder {
+  color: var(--card-text) !important;
+  font-family: "Roboto", sans-serif !important;
+  font-size: 1em !important;
+}
+
+.region-custom__option {
+  color: #111827 !important;
+  background: #fff !important;
+}
+
+.region-custom__option--is-focused {
+  background: color-mix(in srgb, var(--color-button-reward) 15%, white) !important;
+}
+
+.region-custom__option--is-selected {
+  background: var(--color-button-reward) !important;
+  color: #fff !important;
+}
+
+
+/* MAP */
+.map-wrap {
+  height: 500px;
+  width: 100%;
+}
+
+.map-wrap .leaflet-tile {
+  filter: grayscale(100%) contrast(105%);
+}
+
+
+.map-wrap .leaflet-marker-shadow,
+.map-wrap .leaflet-popup {
+  filter: none !important;
+}
+.map-wrap .leaflet-marker-icon.custom-pin {
+  filter: hue-rotate(120deg) saturate(60%) brightness(0.85) !important;
+}
+
+.place-popup .leaflet-popup-content-wrapper {
+  background: var(--color-bg);
+  color: var(--color-text);
+  border-radius: 10px;
+  padding: 6px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.place-popup .popup-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--color-text) !important;
+  background-color: var(--color-button-reward);
+  padding: 12px;
+  text-decoration: none;
+  border-radius: 10px;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.place-popup .popup-link:hover {
+color: var(--color-button-reward) !important;
+  background-color: var(--color-text);
+}
+.place-popup .popup-link:focus-visible {
+  outline: 2px solid #ffd166;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.view-toggle {
+  display: flex;
+  width: 100%;
+  gap: 12px;
+}
+
+.view-toggle-btn  {
+  flex: 1;        
+  min-width: 0;   
+}
+
+.custom-pin {
+  filter: hue-rotate(140deg) saturate(180%) brightness(0.95);
+}

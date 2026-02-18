@@ -1,6 +1,7 @@
 import { supabase } from "../supabase/supabase.js";
 import {useState, useEffect} from 'react';
 import { useAuth } from "../context/AuthContext";
+import '../index.css'
 
 
 export const Secret = () => {
@@ -44,7 +45,7 @@ export const Secret = () => {
 
       <p>View your visit history, check-in times, and rewards earned for each location</p>
 
-      <ul>
+      <ul className="rewards-list">
         {rewards !== null &&
           rewards.map(reward => {
             const placeImage = reward?.places?.images?.[0]?.filename
@@ -59,28 +60,25 @@ export const Secret = () => {
                 })
               : '—'
             return (
-              <li key={reward.id}>
-                <h3>{reward?.places?.name ?? 'Unknown place'} </h3>{createdAt}
+          
 
-                {placeImage && (
-                  <img
-                    src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/places/${placeImage}`}
-                  />
-                )}
+              <li key={reward.id} >
+                <h3>{reward?.places?.name ?? 'Unknown place'} visited: {createdAt}</h3>
+<div className="my-rewards-images">
                 {rewardImage && (
                   <img
                     src={`https://eyspimqmzwtcijvhxxmn.supabase.co/storage/v1/object/images/rewards/${rewardImage}`}
-                  />
+                  className="my-rewards-image" />
                 )}
+</div>
+                
               </li>
+        
             )
           })
         }
       </ul>
 
-      <hr />
-
-      <button onClick={saveReward}>Save rewards</button>
 
     </>
   );

@@ -2,7 +2,7 @@ import React from 'react';
 import '../App.css';
 import './rewardBox.css';
 
-const RewardBoxInactive = () => {
+const RewardBoxRegister = () => {
   return (
     <div className="reward-container"> 
        <img
@@ -20,4 +20,4 @@ const RewardBoxInactive = () => {
   );
 };
 
-export default RewardBoxInactive;
+export default RewardBoxRegister;
