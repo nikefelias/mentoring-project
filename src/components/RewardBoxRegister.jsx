@@ -1,17 +1,24 @@
 import React from 'react';
 import '../App.css';
 import './RewardBox.css';
+import { supabase } from "../supabase/supabase.js";
+
+const { data } = supabase.storage
+  .from("images")
+  .getPublicUrl("rewards/reward-inactive.png");
+
+const inactiveRewardUrl = data.publicUrl;
 
 const RewardBoxRegister = () => {
   return (
     <div className="reward-container"> 
-       <img
-        src="/images/reward-inactive.svg"
-        alt="Reward Icon"
-        className="reward-image"
-      />
+      <img
+  src={inactiveRewardUrl}
+  alt="Reward Icon"
+  className="reward-image"
+/>
       <div className="reward-text-content">
-        <h3 className="reward-title">Ready to unlock?</h3>
+        <h2 className="reward-title">Ready to unlock?</h2>
         <p className="reward-description">
         Create an account to collect this reward and see what else is nearby!
         </p>
@@ -21,3 +28,4 @@ const RewardBoxRegister = () => {
 };
 
 export default RewardBoxRegister;
+

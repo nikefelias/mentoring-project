@@ -12,7 +12,7 @@
 
 .reward-image {
   width: 80px; 
-  height: 80px;
+  height: 100%;
   object-fit: contain;
   margin: 0 20px;
 }
@@ -20,12 +20,11 @@
 .reward-text-content {
   display: flex;
   flex-direction: column; 
-  padding: 20px;
+    justify-content: center;
+    gap:12px;
+    padding-right: 20px;
 }
-.reward-text-content-gps h2 {
-   padding-top: 20px;
-   text-align: center;
-}
+
 
 .reward-title {
   color: var(--color-bg);
@@ -34,4 +33,13 @@
 }
 .reward-description {
   color: var(--card-text);
+    padding:0;
+  margin:0;
 }
+
+.reward-container-gps {
+   align-items: center;
+   justify-content: center;
+   padding: 20px;
+}
+

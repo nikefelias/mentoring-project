@@ -1,10 +1,16 @@
 import React from 'react';
 import '../App.css';
 import './RewardBox.css';
-import { useGpsContext } from '../context/GpsContext.jsx'
+import { useGpsContext } from '../context/GpsContext.jsx';
+import { supabase } from "../supabase/supabase.js";
 
 
-const RewardBoxInactive = ({ distance }) => {
+const fallbackFromBucket = supabase.storage
+  .from("images")
+  .getPublicUrl("rewards/reward-inactive.png").data.publicUrl;
+
+
+const RewardBoxInactive = ({ distance, rewardImageUrl }) => {
   const distanceKm = distance != null ? (distance / 1000).toFixed(1) : null;
   const gps = useGpsContext();
   const isGpsEnabled = Boolean(
@@ -14,19 +20,16 @@ const RewardBoxInactive = ({ distance }) => {
 
   return (
     <div className="reward-container"> 
-       <img
-        src="/images/reward-inactive.svg"
-        alt="Reward Icon"
-        className="reward-image"
-      />
+      <img src={rewardImageUrl || fallbackFromBucket} alt="Reward Icon" className="reward-image" />
+
       <div className="reward-text-content">
-        <h3 className="reward-title">
+        <h2 className="reward-title">
 
           {isGpsEnabled === true
             ? `You're almost there!`
             : 'Enable GPS to see the distance to unlock your reward.'}
 
-        </h3>
+        </h2>
         <p className="reward-description">
           {distanceKm != null
             ? `Get within 100 m to unlock your reward.`

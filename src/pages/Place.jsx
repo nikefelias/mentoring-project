@@ -6,16 +6,13 @@ import PlaceDescription from "../components/place-description.jsx";
 import Slider from "../components/Slider.jsx";
 import { useGpsContext } from "../context/GpsContext.jsx";
 import { getGPSBearing, getGPSDistance } from "../utils/geo-helpers";
-import RewardCard from "../components/reward-card.jsx";
-import UpdateReward from "../components/UpdateReward.jsx";
+import RewardCard from "../components/RewardCard.jsx";
 import { supabase } from "../supabase/supabase.js";
-import RewardBoxActive from "../components/RewardBoxActive.jsx";
 import RewardBoxInactive from "../components/RewardBoxInactive.jsx";
 import { useAuth } from "../context/AuthContext.jsx";
 import TurnOnGpsBox from "../components/TurnOnGpsBox.jsx";
 import "../index.css";
 import RewardBoxRegister from "../components/RewardBoxRegister.jsx";
-
 export default function Place() {
   const { id: slug } = useParams();
   const gps = useGpsContext();

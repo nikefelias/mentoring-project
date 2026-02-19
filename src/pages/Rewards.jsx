@@ -31,19 +31,17 @@ export const Secret = () => {
   }, [])
 
 
-  const saveReward = async () => {
-    const x = await supabase.from('rewards').insert({
-      user_id: user.id,
-      place_id: 2,
-    })
-    console.log(user)
-    console.log(x)
-  }
+  // const saveReward = async () => {
+  //   const x = await supabase.from('rewards').insert({
+  //     user_id: user.id,
+  //     place_id: 2,
+  //   })
+  //   console.log(user)
+  //   console.log(x)
+  // }
   return (
     <>
       <h1>My Rewards</h1>
-
-      <p>View your visit history, check-in times, and rewards earned for each location</p>
 
       <ul className="rewards-list">
         {rewards !== null &&
