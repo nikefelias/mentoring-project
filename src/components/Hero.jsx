@@ -16,7 +16,7 @@ export default function Hero() {
       </p>
       <div className="buttons">
         <Link className="button-link" to="/register">
-          <button type="button">Register</button>
+          <button type="button">Sign in | Register</button>
         </Link>
         <Link className="button-link" to="/About">
           <button type="button">How it works</button>

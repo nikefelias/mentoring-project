@@ -12,14 +12,17 @@ export default function Register() {
 	// const [age, setAge] = useState('')
 
    const [message, setMessage] = useState(null)
+   const [messageType, setMessageType] = useState("")
 
   const handleSubmit = async (e) =>{
       e.preventDefault()
   
       setMessage(null)
+      setMessageType("")
   
       if (email === '' || password === '') {
         setMessage('You have to fill in email and password')
+        setMessageType("error")
         return
       }
   
@@ -30,11 +33,13 @@ export default function Register() {
   
       if (!error && data) {
         setMessage("Registration Successful. Check your email to confirm your account");
+        setMessageType("success")
         console.log(data)
       }
   
       if (error) {
         setMessage("There was an error");
+        setMessageType("error")
         console.log(error)
       }
   
@@ -43,8 +48,8 @@ export default function Register() {
 
   return (
     <>
-    <h1>Registrace</h1>
-    {message && <p>{message}</p>}
+    <h1>Registration</h1>
+    {message && <p className={`register__message ${messageType}`}>{message}</p>}
     <form onSubmit={handleSubmit}>
     <div className="register-page">
       <div className="register">
@@ -66,7 +71,7 @@ export default function Register() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           className="register__input"
-          placeholder="Your password"
+          placeholder="Your password (At least 6 characters)"
         />
         </label>
       </div>

@@ -66,7 +66,7 @@ export const Login = ({ onShowRegister }) => {
 					<p className='have_account'>
 						Don't have an account?{" "}
 						{onShowRegister ? (
-							<button type="button" onClick={onShowRegister}>
+							<button type="button"  class="button register__button" onClick={onShowRegister}>
 								Register
 							</button>
 						) : (

@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Login from "../components/Login";
 import Register from "../components/Register";
+import "../components/Register.css";
+import "../App.css"
 
 export default function Signup() {
   const [mode, setMode] = useState("login");
@@ -9,12 +11,14 @@ export default function Signup() {
     return (
       <>
         <Register />
-        <p className='have_account'>
-          Already have an account?{" "}
-          <button type="button" onClick={() => setMode("login")}>
-            Sign in
-          </button>
-        </p>
+        <div className="register-page">
+          <p className='have_account'>
+            Already have an account?{" "}
+            <button type="button" className="button register__button" onClick={() => setMode("login")}>
+              Sign in
+            </button>
+          </p>
+        </div>
       </>
     );
   }

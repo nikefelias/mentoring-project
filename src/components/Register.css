@@ -39,7 +39,31 @@
 .have_account {
   display: flex;
   flex-direction: column;
- 
+  margin: 0;
   text-align: center;
   gap:24px;
+}
+
+.register__message {
+  margin: 12px 0 20px;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.register__message.success {
+  background: var(--color-button-reward);
+  color: var(--card-text);
+}
+
+.register__message.error {
+  background: var(--color-card);
+  color: #991b1b;
+}
+
+.register__button {
+  flex: 0 0 auto;
+  width: 100%;
+  align-self: stretch;
 }
