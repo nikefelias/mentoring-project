@@ -40,7 +40,6 @@ export default function ClosestPlaces({ places = [] }) {
           )}
         </div>
         <div className="slider-card__body">
-          {/* <h3>{place.name}</h3> */}
           {gps.isEnabled && place.distance != null && (
             <h2>{(place.distance / 1000).toFixed(1)} km</h2>
           )}

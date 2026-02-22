@@ -6,17 +6,11 @@ export default function Hero() {
       <h1>Discover 
         the unseen</h1>
       <p>
-        Travel across the Czech Republic and explore its mysterious landmarks —
-        ancient castles, sacred hills, haunted forests, and forgotten villages.
-        Collect stories, earn rewards, and see the country through the lens of
-        legend and mystery. Czech Myst is an interactive map-based experience
-        that connects you with the country’s most enigmatic and legendary
-        places. It’s both a digital guide and a game of discovery — designed for
-        travelers who love mystery, folklore, and hidden gems.
+        Czech Myst is an interactive map-based game that turns exploring Czechia’s legends and mysterious landmarks into a digital adventure.
       </p>
       <div className="buttons">
         <Link className="button-link" to="/register">
-          <button type="button">Sign in | Register</button>
+          <button type="button">Sign in</button>
         </Link>
         <Link className="button-link" to="/About">
           <button type="button">How it works</button>
