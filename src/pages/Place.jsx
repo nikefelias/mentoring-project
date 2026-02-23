@@ -1,11 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 import { Link, useParams } from "react-router";
-import Radar from "../components/radar.jsx";
-import useRadar from "../hooks/useRadar.js";
+import Radar from "../components/Radar-new.jsx";
 import PlaceDescription from "../components/place-description.jsx";
 import Slider from "../components/Slider.jsx";
 import { useGpsContext } from "../context/GpsContext.jsx";
-import { getGPSBearing, getGPSDistance } from "../utils/geo-helpers";
+import { getGPSDistance } from "../utils/geo-helpers";
 import RewardCard from "../components/RewardCard.jsx";
 import { supabase } from "../supabase/supabase.js";
 import RewardBoxInactive from "../components/RewardBoxInactive.jsx";
@@ -49,7 +48,7 @@ export default function Place() {
     loadData();  
   }, [getPlace]);
 
-  const { enableCompass } = useRadar();
+  // const { enableCompass } = useRadar();
 
   const updateReward = async () => {
     if (!user?.id) return;
@@ -67,7 +66,6 @@ export default function Place() {
     gps?.isEnabled && gps?.position?.lat != null && gps?.position?.lon != null,
   );
   const distance = hasGps && place ? getGPSDistance(gps.position, place) : null;
-  const bearing = hasGps && place ? getGPSBearing(gps.position, place) : null;
 
   const hasReward = place?.rewards?.length === 1;
   if (distance !== null && distance < 100 && !hasReward) {
@@ -116,7 +114,7 @@ export default function Place() {
         {place && sliderItems.length > 0 && (
           <Slider items={sliderItems} step={180} />
         )}
-        <Radar goalPlace={place} onEnableCompass={enableCompass} />
+        <Radar goalPlace={place}  />
         {!hasGps ? (
           <TurnOnGpsBox />
         ) : !isAuth ? (

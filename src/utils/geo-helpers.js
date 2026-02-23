@@ -67,3 +67,16 @@ export function getGPSBearing(from, to) {
   return (bearingDegrees + 360) % 360;
 }
 
+
+
+/**
+ * Format distance in meters.
+ * Above 1000m distance is display as kilometers
+ * @param distance - Distance in meters
+ */
+export function formatDistance(distance) {
+  if (distance >= 1000) {
+    return (distance/1000).toFixed(2) + ' km';
+  }
+  return Math.round(distance) + ' m';
+}
