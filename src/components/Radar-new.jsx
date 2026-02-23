@@ -62,7 +62,7 @@ if (goalPlace === null) return null ;
           <div id="goal-distance">
             {isGpsEnabled && formatDistance(distanceToGoal)}
           </div>
-          <img id="goal-arrow" src={arrowIcon} alt="arrow" style={{rotation: `${headingToGoal}deg`}} />
+<img id="goal-arrow" src={arrowIcon} alt="arrow" style={{transform: `rotate(${headingToGoal}deg)`}} />
         </div>
         <MapButton
           className="btn"
