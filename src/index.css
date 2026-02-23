@@ -238,11 +238,13 @@ s
   margin: 0 auto;
   padding: 0;
   width: min(100%, 420px);
+  min-height: 100vh;
 }
 
 .rewards-list li {
   width: 100%;
   text-align: center;
+  
 }
 
 .my-rewards-images {
